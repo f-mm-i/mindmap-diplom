@@ -13,7 +13,7 @@ export const BrushMenu = ({
                               isVisible,
                               children
                           }: BrushMenuProps) => {
-    const backgroundColor = useThemeColor({}, "secondBackground");
+    const backgroundColor = useThemeColor({}, "background");
     const styles = createStyles(backgroundColor);
 
     return (
@@ -25,7 +25,7 @@ export const BrushMenu = ({
                     transform: [{
                         translateX: animationValue.interpolate({
                             inputRange: [0, 1],
-                            outputRange: [100, 0]
+                            outputRange: [120, 0]
                         })
                     }]
                 }
@@ -43,18 +43,18 @@ const createStyles = (backgroundColor: string) =>
     StyleSheet.create({
         brushMenu: {
             position: 'absolute',
-            right: 70,
-            top: 0,
+            right: 72,
+            top: 6,
             backgroundColor: backgroundColor,
-            borderRadius: 12,
-            padding: 12,
+            borderRadius: 22,
+            padding: 18,
             elevation: 5,
             shadowColor: "#000",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.2,
-            shadowRadius: 4,
+            shadowOffset: { width: 0, height: 8 },
+            shadowOpacity: 0.18,
+            shadowRadius: 12,
             zIndex: 1,
-            width: 160,
+            width: 210,
         },
         brushMenuContent: {
             width: '100%',

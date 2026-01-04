@@ -42,18 +42,18 @@ const styles = StyleSheet.create({
     },
     strokeWidthButton: {
         width: '100%',
-        height: 40,
+        height: 34,
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 2,
-        borderRadius: 8,
-        backgroundColor: 'rgba(0,0,0,0.05)',
+        marginVertical: 5,
+        borderRadius: 12,
+        backgroundColor: '#F2F2F2',
     },
     selectedStrokeButton: {
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        backgroundColor: '#E6E6E6',
     },
     strokeWidthIndicator: {
-        width: '80%',
+        width: '75%',
         borderRadius: 4,
     }
 });
