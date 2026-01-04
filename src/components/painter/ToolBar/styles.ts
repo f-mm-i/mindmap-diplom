@@ -5,23 +5,30 @@ export const createToolbarStyles = () =>
     StyleSheet.create({
         container: {
             position: "absolute",
-            top: 20,
-            right: 20,
-            alignItems: 'flex-end',
+            top: 24,
+            right: 16,
+            alignItems: 'center',
             zIndex: 1000,
             shadowColor: "#000",
             borderRadius: 18,
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.2,
             shadowRadius: 4,
-            backgroundColor: getSecondBackgroundColor()
+            backgroundColor: getSecondBackgroundColor(),
+            paddingVertical: 8,
+            paddingHorizontal: 6,
+            gap: 6,
         },
         mainButton: {
-            padding: 12,
+            width: 44,
+            height: 44,
+            borderRadius: 14,
+            alignItems: 'center',
+            justifyContent: 'center',
             elevation: 5,
         },
         active: {
-          backgroundColor: getTabIconColor(true)
+            backgroundColor: "#FFFFFF",
         },
         brushMenu: {
             position: 'absolute',

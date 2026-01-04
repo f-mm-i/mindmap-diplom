@@ -19,7 +19,7 @@ export const ToolButton = ({
                            }: ToolButtonProps) => {
     const styles = createToolbarStyles();
     return <Pressable
-        style={[styles.mainButton]}
+        style={[styles.mainButton, selectedTool === tool && styles.active]}
         onPress={() => {
             console.log(tool);
             onPress(tool);
