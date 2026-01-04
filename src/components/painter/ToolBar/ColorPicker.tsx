@@ -33,26 +33,26 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 14,
-        paddingHorizontal: 2,
+        marginBottom: 16,
+        paddingHorizontal: 4,
         width: '100%',
     },
     colorGrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        gap: 12,
+        gap: 14,
         width: '100%',
     },
     colorButton: {
-        width: 34,
-        height: 34,
-        borderRadius: 17,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
         borderWidth: 1,
         borderColor: 'rgba(0,0,0,0.06)',
     },
     selectedColor: {
-        borderWidth: 2,
+        borderWidth: 3,
         borderColor: '#007AFF',
     }
 });

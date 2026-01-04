@@ -1,4 +1,4 @@
-import {Animated, View} from "react-native";
+import {Animated, Pressable, View} from "react-native";
 import React, {useRef, useState} from "react";
 import {BrushMenu} from "./BrushMenu";
 import {ColorPicker} from "./ColorPicker";
@@ -8,6 +8,7 @@ import {getTabIconColor} from "@/src/components/painter/ToolBar/get_colors";
 import {ToolType} from "@/src/types/Tools";
 import {DrawingSettings} from "@/src/types/DrawingSettings";
 import {ToolButton} from "@/src/components/painter/ToolBar/ToolButton";
+import {Ionicons} from "@expo/vector-icons";
 
 interface ToolbarProps {
     selectedTool: ToolType;
@@ -70,9 +71,19 @@ export const Toolbar = ({
     };
 
     const showBrushMenu = menuTool !== null;
+    const iconColor = "#686868";
 
     return (
         <View style={styles.container} pointerEvents="box-none">
+            <Pressable style={styles.mainButton} onPress={() => undefined}>
+                <Ionicons name="arrow-undo" size={22} color={iconColor}/>
+            </Pressable>
+            <Pressable style={styles.mainButton} onPress={() => undefined}>
+                <Ionicons name="image-outline" size={22} color={iconColor}/>
+            </Pressable>
+            <Pressable style={styles.mainButton} onPress={() => undefined}>
+                <Ionicons name="text-outline" size={22} color={iconColor}/>
+            </Pressable>
             <ToolButton
                 icon="pencil"
                 tool="draw"

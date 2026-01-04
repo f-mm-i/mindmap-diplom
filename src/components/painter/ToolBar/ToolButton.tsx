@@ -2,7 +2,6 @@ import {ToolType} from "@/src/types/Tools";
 import {createToolbarStyles} from "@/src/components/painter/ToolBar/styles";
 import {Pressable} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
-import {getTabIconColor} from "@/src/components/painter/ToolBar/get_colors";
 import React from "react";
 
 type ToolButtonProps = {
@@ -18,6 +17,7 @@ export const ToolButton = ({
                                onPress
                            }: ToolButtonProps) => {
     const styles = createToolbarStyles();
+    const iconColor = selectedTool === tool ? "#000000" : "#686868";
     return <Pressable
         style={[styles.mainButton, selectedTool === tool && styles.active]}
         onPress={() => {
@@ -25,7 +25,7 @@ export const ToolButton = ({
             onPress(tool);
         }}
     >
-        <Ionicons name={icon} size={28} color={getTabIconColor(selectedTool == tool)}/>
+        <Ionicons name={icon} size={24} color={iconColor}/>
     </Pressable>
 
 };
