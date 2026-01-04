@@ -5,13 +5,11 @@ const DEFAULT_COLORS = ["#000000", "#FF0000", "#FFA500", "#FFFF00", "#008000", "
 interface ColorPickerProps {
     selectedColor: string;
     onSelect: (color: string) => void;
-    themeForeground: string;
 }
 
 export const ColorPicker = ({
                                 selectedColor,
-                                onSelect,
-                                themeForeground
+                                onSelect
                             }: ColorPickerProps) => (
     <View style={styles.colorSection}>
         <View style={styles.colorGrid}>
@@ -36,25 +34,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 16,
-        paddingHorizontal: 8,
+        paddingHorizontal: 4,
         width: '100%',
     },
     colorGrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        gap: 8,
+        gap: 14,
         width: '100%',
     },
     colorButton: {
-        width: 28,
-        height: 28,
-        borderRadius: 14,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
         borderWidth: 1,
-        borderColor: 'rgba(0,0,0,0.1)',
+        borderColor: 'rgba(0,0,0,0.06)',
     },
     selectedColor: {
-        borderWidth: 2,
-        borderColor: '#fff',
+        borderWidth: 3,
+        borderColor: '#007AFF',
     }
 });

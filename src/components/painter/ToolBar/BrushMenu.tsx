@@ -1,6 +1,5 @@
 import { Animated, StyleSheet, View } from "react-native";
 import React from "react";
-import { useThemeColor } from "@/src/hooks/useThemeColor";
 
 interface BrushMenuProps {
     animationValue: Animated.Value;
@@ -13,8 +12,7 @@ export const BrushMenu = ({
                               isVisible,
                               children
                           }: BrushMenuProps) => {
-    const backgroundColor = useThemeColor({}, "secondBackground");
-    const styles = createStyles(backgroundColor);
+    const styles = createStyles();
 
     return (
         <Animated.View
@@ -25,7 +23,7 @@ export const BrushMenu = ({
                     transform: [{
                         translateX: animationValue.interpolate({
                             inputRange: [0, 1],
-                            outputRange: [100, 0]
+                            outputRange: [120, 0]
                         })
                     }]
                 }
@@ -39,22 +37,22 @@ export const BrushMenu = ({
     );
 };
 
-const createStyles = (backgroundColor: string) =>
+const createStyles = () =>
     StyleSheet.create({
         brushMenu: {
             position: 'absolute',
-            right: 70,
-            top: 0,
-            backgroundColor: backgroundColor,
-            borderRadius: 12,
-            padding: 12,
+            right: 76,
+            top: 12,
+            backgroundColor: "#FFFFFF",
+            borderRadius: 20,
+            padding: 20,
             elevation: 5,
             shadowColor: "#000",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.2,
-            shadowRadius: 4,
+            shadowOffset: { width: 0, height: 10 },
+            shadowOpacity: 0.16,
+            shadowRadius: 14,
             zIndex: 1,
-            width: 160,
+            width: 240,
         },
         brushMenuContent: {
             width: '100%',

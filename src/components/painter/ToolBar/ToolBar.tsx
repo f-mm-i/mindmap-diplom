@@ -1,4 +1,4 @@
-import {Animated, View} from "react-native";
+import {Animated, Pressable, View} from "react-native";
 import React, {useRef, useState} from "react";
 import {BrushMenu} from "./BrushMenu";
 import {ColorPicker} from "./ColorPicker";
@@ -8,6 +8,7 @@ import {getTabIconColor} from "@/src/components/painter/ToolBar/get_colors";
 import {ToolType} from "@/src/types/Tools";
 import {DrawingSettings} from "@/src/types/DrawingSettings";
 import {ToolButton} from "@/src/components/painter/ToolBar/ToolButton";
+import {Ionicons} from "@expo/vector-icons";
 
 interface ToolbarProps {
     selectedTool: ToolType;
@@ -19,6 +20,7 @@ interface ToolbarProps {
 interface BrushMenuProps {
     brushMenuAnimation: Animated.Value;
     showBrushMenu: boolean;
+    menuTool: ToolType | null;
     settings: DrawingSettings;
     onUpdateSettings: (settings: Partial<DrawingSettings>) => void;
 }
@@ -26,6 +28,7 @@ interface BrushMenuProps {
 const getBrushMenu = ({
     brushMenuAnimation,
     showBrushMenu,
+    menuTool,
     settings,
     onUpdateSettings
 } : BrushMenuProps) => {
@@ -34,11 +37,12 @@ const getBrushMenu = ({
         animationValue={brushMenuAnimation}
         isVisible={showBrushMenu}
     >
-        <ColorPicker
-            selectedColor={settings.color}
-            onSelect={(color) => onUpdateSettings({color})}
-            themeForeground={themeForeground}
-        />
+        {menuTool === "draw" && (
+            <ColorPicker
+                selectedColor={settings.color}
+                onSelect={(color) => onUpdateSettings({color})}
+            />
+        )}
         <StrokeWidthPicker
             selectedWidth={settings.width}
             onSelect={(width) => onUpdateSettings({width})}
@@ -53,44 +57,60 @@ export const Toolbar = ({
                             settings,
                             onUpdateSettings,
                         }: ToolbarProps) => {
-    const [showBrushMenu, setShowBrushMenu] = useState(false);
+    const [menuTool, setMenuTool] = useState<ToolType | null>(null);
     const brushMenuAnimation = useRef(new Animated.Value(0)).current;
     const styles = createToolbarStyles();
 
-    const toggleBrushMenu = (value: boolean = false) => {
+    const toggleBrushMenu = (tool: ToolType | null) => {
         Animated.timing(brushMenuAnimation, {
-            toValue: !value ? 0 : 1,
+            toValue: tool ? 1 : 0,
             duration: 300,
             useNativeDriver: true,
         }).start();
-        setShowBrushMenu(value);
+        setMenuTool(tool);
     };
+
+    const showBrushMenu = menuTool !== null;
+    const iconColor = "#686868";
 
     return (
         <View style={styles.container} pointerEvents="box-none">
+            <Pressable style={styles.mainButton} onPress={() => undefined}>
+                <Ionicons name="arrow-undo" size={22} color={iconColor}/>
+            </Pressable>
+            <Pressable style={styles.mainButton} onPress={() => undefined}>
+                <Ionicons name="image-outline" size={22} color={iconColor}/>
+            </Pressable>
+            <Pressable style={styles.mainButton} onPress={() => undefined}>
+                <Ionicons name="text-outline" size={22} color={iconColor}/>
+            </Pressable>
             <ToolButton
-                icon="brush"
+                icon="pencil"
                 tool="draw"
                 selectedTool={selectedTool}
                 onPress={() => {
                     if (selectedTool === "draw") {
-                        toggleBrushMenu(!showBrushMenu);
+                        toggleBrushMenu(menuTool === "draw" ? null : "draw");
                     } else {
                         onSelectTool("draw");
+                        toggleBrushMenu("draw");
                     }
                 }}
             />
-            {getBrushMenu({brushMenuAnimation, showBrushMenu, settings, onUpdateSettings})}
+            {getBrushMenu({brushMenuAnimation, showBrushMenu, menuTool, settings, onUpdateSettings})}
             <ToolButton
                 icon="trash-outline"
                 tool="erase"
                 selectedTool={selectedTool}
                 onPress={() => {
-                    toggleBrushMenu(false);
-                    onSelectTool("erase");
+                    if (selectedTool === "erase") {
+                        toggleBrushMenu(menuTool === "erase" ? null : "erase");
+                    } else {
+                        onSelectTool("erase");
+                        toggleBrushMenu("erase");
+                    }
                 }}
             />
         </View>
     );
 };
-

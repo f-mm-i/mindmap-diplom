@@ -5,6 +5,7 @@ import {useCanvasLogic} from "@/src/components/painter/CanvasRenderer/useCanvasL
 import Header from "@/src/navigation/Header";
 import {CanvasRenderer} from "@/src/components/painter/CanvasRenderer/CanvasRenderer";
 import {Toolbar} from "@/src/components/painter/ToolBar/ToolBar";
+import {PainterOverlay} from "@/src/components/painter/PainterOverlay";
 
 export default function PainterScreen() {
     const router = useRouter();
@@ -44,6 +45,7 @@ export default function PainterScreen() {
                         // {/*onSelectColor={((color: string) => updateSettings({color}))}*/}
                         // {/*onSelectStrokeWidth={((width: number) => updateSettings({width}))}*/}
                     />
+                    <PainterOverlay/>
                 </View>
             </SafeAreaView>
         </ThemedView>
