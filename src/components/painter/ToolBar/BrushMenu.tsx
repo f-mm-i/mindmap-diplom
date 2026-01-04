@@ -25,7 +25,7 @@ export const BrushMenu = ({
                     transform: [{
                         translateX: animationValue.interpolate({
                             inputRange: [0, 1],
-                            outputRange: [100, 0]
+                            outputRange: [120, 0]
                         })
                     }]
                 }
@@ -43,18 +43,18 @@ const createStyles = (backgroundColor: string) =>
     StyleSheet.create({
         brushMenu: {
             position: 'absolute',
-            right: 80,
-            top: 4,
+            right: 72,
+            top: 6,
             backgroundColor: backgroundColor,
-            borderRadius: 20,
-            padding: 16,
+            borderRadius: 22,
+            padding: 18,
             elevation: 5,
             shadowColor: "#000",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.2,
-            shadowRadius: 4,
+            shadowOffset: { width: 0, height: 8 },
+            shadowOpacity: 0.18,
+            shadowRadius: 12,
             zIndex: 1,
-            width: 190,
+            width: 210,
         },
         brushMenuContent: {
             width: '100%',

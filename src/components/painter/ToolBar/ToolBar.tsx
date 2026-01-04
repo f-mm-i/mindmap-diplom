@@ -74,7 +74,7 @@ export const Toolbar = ({
     return (
         <View style={styles.container} pointerEvents="box-none">
             <ToolButton
-                icon="brush"
+                icon="pencil"
                 tool="draw"
                 selectedTool={selectedTool}
                 onPress={() => {
